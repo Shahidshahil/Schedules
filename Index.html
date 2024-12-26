@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPL Season 9 Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        header {
+            padding: 20px;
+            background: #0f243e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: lighter;
+            color: #a0c4ff;
+        }
+        header h3 {
+            margin: 10px 0;
+            font-size: 32px;
+            color: #ffcc00;
+        }
+        .team-buttons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .team-buttons button {
+            background: #ffcc00;
+            color: #0f243e;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            min-width: 150px;
+        }
+        .team-buttons button:hover {
+            background: #ffd700;
+            transform: scale(1.1);
+        }
+        #match-schedule {
+            margin: 20px;
+            padding: 20px;
+            background: #1e3c72;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .match {
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        .animation-container {
+            position: relative;
+            height: 200px;
+            margin-top: 30px;
+        }
+        .cricket-ball {
+            position: absolute;
+            font-size: 50px;
+            animation: bounceBall 3s infinite ease-in-out;
+        }
+        .cricket-bat {
+            position: absolute;
+            font-size: 60px;
+            animation: swingBat 2s infinite alternate ease-in-out;
+        }
+        @keyframes bounceBall {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            50% {
+                top: 100px;
+                left: 150px;
+            }
+            100% {
+                top: 0;
+                left: 300px;
+            }
+        }
+        @keyframes swingBat {
+            0% {
+                top: 100px;
+                left: 50px;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 80px;
+                left: 250px;
+                transform: rotate(-15deg);
+            }
+        }
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+            header h2 {
+                font-size: 20px;
+            }
+            header h3 {
+                font-size: 24px;
+            }
+            .team-buttons button {
+                font-size: 16px;
+                padding: 10px 15px;
+                min-width: 120px;
+            }
+            #match-schedule {
+                margin: 10px;
+                padding: 15px;
+                max-width: 90%;
+            }
+            .animation-container {
+                height: 150px;
+            }
+            .cricket-ball {
+                font-size: 40px;
+            }
+            .cricket-bat {
+                font-size: 50px;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .cricket-ball {
+                font-size: 30px;
+            }
+            .cricket-bat {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Souharda Vedike Sarve</h1>
+        <h2>Presents</h2>
+        <h3>SPL Season - 9</h3>
+    </header>
+    <div class="team-buttons" role="navigation" aria-label="Team Selection">
+        <button onclick="showMatches('Yashaswi Guys Nekkithadka')">Yashaswi Guys Nekkithadka</button>
+        <button onclick="showMatches('Redco Riders Koodurasthe')">Redco Riders Koodurasthe</button>
+        <button onclick="showMatches('Brothers Nerolthadka')">Brothers Nerolthadka</button>
+        <button onclick="showMatches('Young Fighters Nerolthadka')">Young Fighters Nerolthadka</button>
+        <button onclick="showMatches('Trophy Fighters Darbe')">Trophy Fighters Darbe</button>
+        <button onclick="showMatches('Blasters Koodurasthe')">Blasters Koodurasthe</button>
+    </div>
+    <div id="match-schedule" aria-live="polite">
+        <h2>Match Schedule</h2>
+        <div id="matches"></div>
+    </div>
+    <div class="animation-container" aria-hidden="true">
+        <div class="cricket-ball">🥎</div>
+        <div class="cricket-bat">🏏</div>
+    </div>
+    <script>
+        const schedule = {
+            "Yashaswi Guys Nekkithadka": [
+                "Match 1: Yashaswi Guys Nekkithadka 🆚 Redco Riders Koodurasthe",
+                "Match 4: Yashaswi Guys Nekkithadka 🆚 Young Fighters Nerolthadka",
+                "Match 8: Yashaswi Guys Nekkithadka 🆚 Trophy Fighters Darbe",
+                "Match 12: Yashaswi Guys Nekkithadka 🆚 Brothers Nerolthadka",
+                "Match 15: Yashaswi Guys Nekkithadka 🆚 Blasters Koodurasthe"
+            ],
+            "Redco Riders Koodurasthe": [
+                "Match 1: Yashaswi Guys Nekkithadka 🆚 Redco Riders Koodurasthe",
+                "Match 5: Redco Riders Koodurasthe 🆚 Blasters Koodurasthe",
+                "Match 7: Redco Riders Koodurasthe 🆚 Young Fighters Nerolthadka",
+                "Match 10: Redco Riders Koodurasthe 🆚 Trophy Fighters Darbe",
+                "Match 14: Redco Riders Koodurasthe 🆚 Brothers Nerolthadka"
+            ],
+            "Brothers Nerolthadka": [
+                "Match 2: Brothers Nerolthadka 🆚 Young Fighters Nerolthadka",
+                "Match 6: Brothers Nerolthadka 🆚 Trophy Fighters Darbe",
+                "Match 9: Brothers Nerolthadka 🆚 Blasters Koodurasthe",
+                "Match 12: Yashaswi Guys Nekkithadka 🆚 Brothers Nerolthadka",
+                "Match 14: Redco Riders Koodurasthe 🆚 Brothers Nerolthadka"
+            ],
+            "Young Fighters Nerolthadka": [
+                "Match 2: Brothers Nerolthadka 🆚 Young Fighters Nerolthadka",
+                "Match 4: Yashaswi Guys Nekkithadka 🆚 Young Fighters Nerolthadka",
+                "Match 7: Redco Riders Koodurasthe 🆚 Young Fighters Nerolthadka",
+                "Match 11: Young Fighters Nerolthadka 🆚 Blasters Koodurasthe",
+                "Match 13: Young Fighters Nerolthadka 🆚 Trophy Fighters Darbe"
+            ],
+            "Trophy Fighters Darbe": [
+                "Match 3: Trophy Fighters Darbe 🆚 Blasters Koodurasthe",
+                "Match 6: Brothers Nerolthadka 🆚 Trophy Fighters Darbe",
+                "Match 8: Yashaswi Guys Nekkithadka 🆚 Trophy Fighters Darbe",
+                "Match 10: Redco Riders Koodurasthe 🆚 Trophy Fighters Darbe",
+                "Match 13: Young Fighters Nerolthadka 🆚 Trophy Fighters Darbe"
+            ],
+            "Blasters Koodurasthe": [
+                "Match 3: Trophy Fighters Darbe 🆚 Blasters Koodurasthe",
+                "Match 5: Redco Riders Koodurasthe 🆚 Blasters Koodurasthe",
+                "Match 9: Brothers Nerolthadka 🆚 Blasters Koodurasthe",
+                "Match 11: Young Fighters Nerolthadka 🆚 Blasters Koodurasthe",
+                "Match 15: Yashaswi Guys Nekkithadka 🆚 Blasters Koodurasthe"
+            ]
+        };
+
+        function showMatches(team) {
+            const matchContainer = document.getElementById('matches');
+            matchContainer.innerHTML = '';
+            schedule[team].forEach(match => {
+                const matchDiv = document.createElement('div');
+                matchDiv.classList.add('match');
+                matchDiv.textContent = match;
+                matchContainer.appendChild(matchDiv);
+            });
+        }
+    </script>
+</body>
+</html>
